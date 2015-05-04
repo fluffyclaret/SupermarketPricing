@@ -8,34 +8,26 @@ using Supermarket.Core;
 
 namespace Supermarket.Test.Core
 {
-    public class WhenTestingProductInitialisation : SpecBase
+    public abstract class WhenTestingProductInitialisation : SpecBase
     {
-        private Product _product = null;
+        protected Product _product = null;
 
-        private string _name, _sku;
+        protected ProductBuilder _builder;
+
+        protected string _name, _sku;
+
         protected override void Given()
         {
             base.Given();
 
             _name = "Beans";
             _sku = "001";
+
+            _builder = new ProductBuilder();
         }
 
-        protected override void When()
-        {
-            _product = new Product(_name, _sku);
-        }
-
-        [NUnit.Framework.Test]
-        public void ThenTheProductShoudHaveTheCorrectName()
-        {
-            Assert.That(_product.Name, Is.EqualTo(_name));
-        }
-
-        [NUnit.Framework.Test]
-        public void ThenTheProductShoudHaveTheCorrectSKU()
-        {
-            Assert.That(_product.SKU, Is.EqualTo(_sku));
-        }
+        
     }
+
+
 }

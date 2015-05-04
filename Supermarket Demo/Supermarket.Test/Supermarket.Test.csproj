@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AndWeForgetToSetProductName.cs" />
+    <Compile Include="Core\AndWeInitialiseTheProductCorrectly.cs" />
+    <Compile Include="Core\AndWeForgetToSetProductSKU.cs" />
     <Compile Include="Core\WhenTestingProductInitialisation.cs" />
     <Compile Include="SpecBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
