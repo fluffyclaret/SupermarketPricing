@@ -39,12 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basket.cs" />
+    <Compile Include="Pricing.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Supermarket.Core\Supermarket.Core.csproj">
       <Project>{bfaa1054-5605-4e96-85db-5dd01adedea7}</Project>
       <Name>Supermarket.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Supermarket.OO\Supermarket.OO.csproj">
+      <Project>{f3a74f09-1693-4a92-a20e-a4dc80045cef}</Project>
+      <Name>Supermarket.OO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
