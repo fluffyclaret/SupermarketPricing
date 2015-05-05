@@ -15,7 +15,7 @@ namespace Supermarket.Test.Core
         {
             try
             {
-                _product = _builder.ForSKU(_sku).Build();
+                _product = _builder.Start().ForSKU(_sku).Build();
             }
             catch (Exception ex)
             {

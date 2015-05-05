@@ -17,10 +17,13 @@ namespace Supermarket.Core
         public ProductBuilder(IStrategySelector selector)
         {
             _selector = selector;
+        }
 
+        public ProductBuilder Start()
+        {
             _product = new Product();
 
-            _product.Strategy = new UnitPriceStrategy();
+            return this;
         }
 
         public ProductBuilder WithName(string name)

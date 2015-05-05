@@ -11,7 +11,7 @@ namespace Supermarket.Test.Core
     {
         protected override void When()
         {
-            _product = _builder.ForSKU(_sku).WithName(_name).WithUnitPrice(_price).Build();
+            _product = _builder.Start().ForSKU(_sku).WithName(_name).WithUnitPrice(_price).Build();
         }
 
         [NUnit.Framework.Test]

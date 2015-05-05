@@ -28,7 +28,7 @@ namespace Supermarket.Test.Basket
 
             var builder = new ProductBuilder(selector);
 
-            _product = builder.ForSKU("001").WithName("Beans").WithUnitPrice(1).Build();
+            _product = builder.Start().ForSKU("001").WithName("Beans").WithUnitPrice(1).Build();
         }
 
         protected override void When()

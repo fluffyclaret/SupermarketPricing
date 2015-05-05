@@ -21,7 +21,7 @@ namespace Supermarket.Test.Core
         {
             try
             {
-                _product = _builder.ForSKU(_sku).WithName(_name).WithUnitPrice(_price).Build();
+                _product = _builder.Start().ForSKU(_sku).WithName(_name).WithUnitPrice(_price).Build();
             }
             catch (Exception exception)
             {

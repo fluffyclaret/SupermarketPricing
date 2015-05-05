@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basket\WhenTestingABasket.cs" />
+    <Compile Include="Basket\WhenTestingAnUberBasket.cs" />
     <Compile Include="Config\WhenTestingDiscountConfig.cs" />
     <Compile Include="Config\WhenTestingDiscountDeserialiser.cs" />
     <Compile Include="Config\WhenTestingDiscountReader.cs" />

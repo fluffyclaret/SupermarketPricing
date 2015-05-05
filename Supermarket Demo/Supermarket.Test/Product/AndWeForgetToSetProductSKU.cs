@@ -15,7 +15,7 @@ namespace Supermarket.Test.Core
         {
             try
             {
-                _product = _builder.WithName(_name).Build();
+                _product = _builder.Start().WithName(_name).Build();
             }
             catch (Exception ex)
             {

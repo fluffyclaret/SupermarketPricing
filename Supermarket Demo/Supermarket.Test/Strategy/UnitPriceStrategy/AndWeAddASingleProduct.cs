@@ -24,7 +24,7 @@ namespace Supermarket.Test.Strategy
             _name = "Beans";
             _price = 1;
 
-            _product = _builder.ForSKU(_sku).WithName(_name).WithUnitPrice(_price).Build();
+            _product = _builder.Start().ForSKU(_sku).WithName(_name).WithUnitPrice(_price).Build();
         }
 
         protected override void When()
