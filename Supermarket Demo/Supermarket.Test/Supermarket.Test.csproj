@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basket\WhenTestingABasket.cs" />
+    <Compile Include="Config\WhenTestingDiscountConfig.cs" />
+    <Compile Include="Config\WhenTestingDiscountDeserialiser.cs" />
+    <Compile Include="Config\WhenTestingDiscountReader.cs" />
     <Compile Include="Product\AndWeDontSelectAPriceStrategy.cs" />
     <Compile Include="Product\AndWeDoSelectAPriceStrategy.cs" />
     <Compile Include="Product\AndWeForgetToSetProductName.cs" />
@@ -78,6 +81,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BulkDiscount.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

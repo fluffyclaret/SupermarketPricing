@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +44,17 @@
   <ItemGroup>
     <Compile Include="Basket.cs" />
     <Compile Include="BulkPriceStrategy.cs" />
+    <Compile Include="DiscountConfig.cs" />
+    <Compile Include="DiscountDeserialiser.cs" />
+    <Compile Include="DiscountReader.cs" />
+    <Compile Include="Discounts.cs" />
+    <Compile Include="IDiscountConfig.cs" />
+    <Compile Include="IDiscountDeserialiser.cs" />
+    <Compile Include="IDiscountReader.cs" />
     <Compile Include="IPricingStrategy.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductBuilder.cs" />
+    <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitPriceStrategy.cs" />
   </ItemGroup>
@@ -52,6 +63,12 @@
       <Project>{bfaa1054-5605-4e96-85db-5dd01adedea7}</Project>
       <Name>Supermarket.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BulkDiscount.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
