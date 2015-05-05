@@ -10,22 +10,26 @@ namespace Supermarket.OO
 {
     public class BulkDiscountPriceStrategy : IPricingStrategy
     {
-        private int _trigger, _bonus, _total;
+        private int _total;
 
         public BulkDiscountPriceStrategy(int trigger, int bonus)
         {
-            _trigger = trigger;
-            _bonus = bonus;
-            _total = (_trigger + _bonus);
+            this.Trigger = trigger;
+            this.Bonus = bonus;
+            _total = (trigger + bonus);
         }
+
+        public int Trigger { get; private set; }
+
+        public int Bonus { get; private set; }
 
         public decimal GetPrice(Product product, int number)
         {
             decimal price = 0;
 
-            int place = number % (_trigger + _bonus);
+            int place = number % (Trigger + Bonus);
 
-            if (place >0 && place <= _trigger)
+            if (place >0 && place <= Trigger)
             {
                 price = product.UnitPrice;
             }

@@ -4,6 +4,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Supermarket.OO;
 
 namespace Supermarket.Core
 {
@@ -11,8 +12,12 @@ namespace Supermarket.Core
     {
         private Product _product;
 
-        public ProductBuilder()
+        private IStrategySelector _selector;
+
+        public ProductBuilder(IStrategySelector selector)
         {
+            _selector = selector;
+
             _product = new Product();
 
             _product.Strategy = new UnitPriceStrategy();
@@ -39,13 +44,6 @@ namespace Supermarket.Core
             return this;
         }
 
-        public ProductBuilder SetStrategy(IPricingStrategy strategy)
-        {
-            _product.Strategy = strategy;
-
-            return this;
-        }
-
         public Product Build()
         {
             if (string.IsNullOrEmpty(_product.Name))
@@ -62,6 +60,8 @@ namespace Supermarket.Core
             {
                 throw new InvalidOperationException("A product cannot have a negative price");
             }
+
+            _product.Strategy = _selector.Create(_product.SKU);
 
             return _product;
         }

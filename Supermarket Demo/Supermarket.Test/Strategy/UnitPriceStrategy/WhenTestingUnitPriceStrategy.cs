@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Rhino.Mocks;
 using Supermarket.Core;
+using Supermarket.OO;
 using Supermarket.Test.Core;
 
 namespace Supermarket.Test.Strategy
@@ -19,9 +21,12 @@ namespace Supermarket.Test.Strategy
         {
             base.Given();
 
-            _builder = new ProductBuilder();
-
             _strategy = new UnitPriceStrategy();
-        }
+
+            var selector = MockRepository.GenerateMock<IStrategySelector>();
+            selector.Stub(s => s.Create(Arg<string>.Is.Anything)).Return(_strategy);
+
+            _builder = new ProductBuilder(selector);
+         }
     }
 }

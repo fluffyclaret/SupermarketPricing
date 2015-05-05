@@ -50,7 +50,6 @@
     <Compile Include="Config\WhenTestingDiscountDeserialiser.cs" />
     <Compile Include="Config\WhenTestingDiscountReader.cs" />
     <Compile Include="Product\AndWeDontSelectAPriceStrategy.cs" />
-    <Compile Include="Product\AndWeDoSelectAPriceStrategy.cs" />
     <Compile Include="Product\AndWeForgetToSetProductName.cs" />
     <Compile Include="Product\AndWeInitialiseTheProductCorrectly.cs" />
     <Compile Include="Product\AndWeForgetToSetProductSKU.cs" />
@@ -65,6 +64,7 @@
     <Compile Include="Strategy\UnitPriceStrategy\AndWeAddASingleProduct.cs" />
     <Compile Include="Strategy\UnitPriceStrategy\AndWeAddMultipleInstances.cs" />
     <Compile Include="Strategy\UnitPriceStrategy\WhenTestingUnitPriceStrategy.cs" />
+    <Compile Include="Strategy\WhenTestingStrategySelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Supermarket.Core\Supermarket.Core.csproj">

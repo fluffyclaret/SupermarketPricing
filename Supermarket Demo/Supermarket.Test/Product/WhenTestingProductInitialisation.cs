@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Rhino.Mocks;
 using Supermarket.Core;
+using Supermarket.OO;
 
 namespace Supermarket.Test.Core
 {
@@ -26,7 +28,10 @@ namespace Supermarket.Test.Core
             _sku = "001";
             _price = 1;
 
-            _builder = new ProductBuilder();
+            var selector = MockRepository.GenerateMock<IStrategySelector>();
+            selector.Stub(s => s.Create(Arg<string>.Is.Anything)).Return(new UnitPriceStrategy());
+
+            _builder = new ProductBuilder(selector);
         }
 
         

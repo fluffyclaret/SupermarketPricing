@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Rhino.Mocks;
 using Supermarket.Core;
+using Supermarket.OO;
 using Supermarket.Test.Core;
 
 namespace Supermarket.Test.Basket
@@ -21,7 +23,10 @@ namespace Supermarket.Test.Basket
 
             _basket = new Supermarket.Core.Basket();
 
-            var builder = new ProductBuilder();
+            var selector = MockRepository.GenerateMock<IStrategySelector>();
+            selector.Stub(s => s.Create(Arg<string>.Is.Anything)).Return(new UnitPriceStrategy());
+
+            var builder = new ProductBuilder(selector);
 
             _product = builder.ForSKU("001").WithName("Beans").WithUnitPrice(1).Build();
         }
