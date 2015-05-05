@@ -14,6 +14,8 @@ namespace Supermarket.Core
         public ProductBuilder()
         {
             _product = new Product();
+
+            _product.Strategy = new UnitPriceStrategy();
         }
 
         public ProductBuilder WithName(string name)
@@ -23,9 +25,23 @@ namespace Supermarket.Core
             return this;
         }
 
+        public ProductBuilder WithUnitPrice(decimal unitPrice)
+        {
+            _product.UnitPrice = unitPrice;
+
+            return this;
+        }
+
         public ProductBuilder ForSKU(string sku)
         {
             _product.SKU = sku;
+
+            return this;
+        }
+
+        public ProductBuilder SetStrategy(IPricingStrategy strategy)
+        {
+            _product.Strategy = strategy;
 
             return this;
         }
@@ -40,6 +56,11 @@ namespace Supermarket.Core
             if (string.IsNullOrEmpty(_product.SKU))
             {
                 throw new InvalidOperationException("You must provide a SKU for the product");
+            }
+
+            if (_product.UnitPrice < 0)
+            {
+                throw new InvalidOperationException("A product cannot have a negative price");
             }
 
             return _product;

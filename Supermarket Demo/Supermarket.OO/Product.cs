@@ -10,10 +10,15 @@ namespace Supermarket.Core
     {
         internal Product()
         {
+            UnitPrice = -1;
         }
 
         public string Name { get; internal set; }
 
         public string SKU { get; internal set; }
+
+        public decimal UnitPrice { get; internal set; }
+
+        public IPricingStrategy Strategy { get; internal set; }
     }
 }
