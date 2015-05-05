@@ -44,13 +44,6 @@
   <ItemGroup>
     <Compile Include="Basket.cs" />
     <Compile Include="BulkPriceStrategy.cs" />
-    <Compile Include="DiscountConfig.cs" />
-    <Compile Include="DiscountDeserialiser.cs" />
-    <Compile Include="DiscountReader.cs" />
-    <Compile Include="Discounts.cs" />
-    <Compile Include="IDiscountConfig.cs" />
-    <Compile Include="IDiscountDeserialiser.cs" />
-    <Compile Include="IDiscountReader.cs" />
     <Compile Include="IPricingStrategy.cs" />
     <Compile Include="IStrategySelector.cs" />
     <Compile Include="Product.cs" />

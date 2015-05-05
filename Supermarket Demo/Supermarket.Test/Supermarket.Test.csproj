@@ -52,6 +52,7 @@
     <Compile Include="Config\WhenTestingDiscountReader.cs" />
     <Compile Include="Functional\Basket\WhenTestingAnUberBasket.cs" />
     <Compile Include="Functional\Basket\WhenTestingTheBasket.cs" />
+    <Compile Include="Functional\Product\AndWeProvideABulkDiscountFunction.cs" />
     <Compile Include="Functional\Product\AndWeProvideASimplePriceFunction.cs" />
     <Compile Include="Functional\Product\WhenTestingTheProductBuilder.cs" />
     <Compile Include="Product\AndWeDontSelectAPriceStrategy.cs" />

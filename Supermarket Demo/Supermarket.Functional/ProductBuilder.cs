@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using Supermarket.Core;
 
 namespace Supermarket.Functional
 {
@@ -10,8 +12,11 @@ namespace Supermarket.Functional
     {
         private Product _product;
 
-        public ProductBuilder()
+        private IDiscountReader _reader;
+
+        public ProductBuilder(IDiscountReader reader)
         {
+            _reader = reader;
         }
 
         public ProductBuilder Start()
@@ -57,6 +62,20 @@ namespace Supermarket.Functional
             if (_product.UnitPrice < 0)
             {
                 throw new InvalidOperationException("A product cannot have a negative price");
+            }
+
+            // TODO: Very very closed
+            var config = _reader.Read();
+
+            var discount = config.discounts.FirstOrDefault(d => d.sku == _product.SKU);
+
+            if (null == discount)
+            {
+                this.UsingUnitPricing();
+            }
+            else
+            {
+                this.UsingBulkDiscountPricing(discount.trigger, discount.bonus);
             }
 
             return _product;

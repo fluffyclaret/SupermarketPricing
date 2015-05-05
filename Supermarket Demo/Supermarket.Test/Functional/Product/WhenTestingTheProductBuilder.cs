@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Supermarket.Functional;
+using Rhino.Mocks;
+using Supermarket.Core;
 using Supermarket.Test.Core;
+using ProductBuilder = Supermarket.Functional.ProductBuilder;
 
 namespace Supermarket.Test.Functional.Product
 {
@@ -16,7 +18,12 @@ namespace Supermarket.Test.Functional.Product
         {
             base.Given();
 
-            _builder = new ProductBuilder();
-        } 
+            var reader = MockRepository.GenerateMock<IDiscountReader>();
+            reader.Stub(r => r.Read()).Return(Discounts);
+
+            _builder = new ProductBuilder(reader);
+        }
+
+        protected abstract Discounts Discounts { get; }
     }
 }

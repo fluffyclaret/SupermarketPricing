@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Rhino.Mocks;
+using Supermarket.Core;
 using Supermarket.Functional;
 using Supermarket.Test.Core;
 
@@ -29,10 +31,13 @@ namespace Supermarket.Test.Functional.Basket
             _p2 = 4m;
             _p3 = 5m;
 
-            var builder = new Supermarket.Functional.ProductBuilder();
-            _beans = builder.Start().ForSKU("001").WithName("Beans").WithUnitPrice(_p1).UsingBulkDiscountPricing(2,2).Build();
-            _milk = builder.Start().ForSKU("002").WithName("Milk").WithUnitPrice(_p2).UsingUnitPricing().Build();
-            _cheese = builder.Start().ForSKU("003").WithName("Cheese").WithUnitPrice(_p3).UsingUnitPricing().Build();
+            var reader = MockRepository.GenerateMock<IDiscountReader>();
+            reader.Stub(r => r.Read()).Return(new Discounts() { discounts = new Discount[] { new Discount() { sku = "001", bonus = 2, trigger = 2 } } });
+
+            var builder = new Supermarket.Functional.ProductBuilder(reader);
+            _beans = builder.Start().ForSKU("001").WithName("Beans").WithUnitPrice(_p1).Build();
+            _milk = builder.Start().ForSKU("002").WithName("Milk").WithUnitPrice(_p2).Build();
+            _cheese = builder.Start().ForSKU("003").WithName("Cheese").WithUnitPrice(_p3).Build();
         }
 
         protected override void When()
@@ -47,7 +52,7 @@ namespace Supermarket.Test.Functional.Basket
             _basket.Add(_beans);
             _basket.Add(_beans);
 
-           _total =  _basket.Price();
+            _total = _basket.Price();
         }
 
         [Test]

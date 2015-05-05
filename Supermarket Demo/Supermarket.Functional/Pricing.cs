@@ -8,7 +8,7 @@ namespace Supermarket.Functional
 {
     public static class Pricing
     {
-        public static ProductBuilder UsingUnitPricing(this ProductBuilder builder)
+        internal static ProductBuilder UsingUnitPricing(this ProductBuilder builder)
         {
             var func = builder.Product.CreateUnitPricing();
 
@@ -17,7 +17,7 @@ namespace Supermarket.Functional
             return builder;
         }
 
-        public static ProductBuilder UsingBulkDiscountPricing(this ProductBuilder builder, int trigger, int bonus)
+        internal static ProductBuilder UsingBulkDiscountPricing(this ProductBuilder builder, int trigger, int bonus)
         {
             var func = builder.Product.CreateBulkDiscountPricing(trigger, bonus);
 
@@ -26,12 +26,12 @@ namespace Supermarket.Functional
             return builder;
         }
 
-        public static Func<int, decimal> CreateUnitPricing(this Product product)
+        internal static Func<int, decimal> CreateUnitPricing(this Product product)
         {
             return i => product.UnitPrice;
         }
 
-        public static  Func<int, decimal> CreateBulkDiscountPricing(this Product product, int trigger, int bonus)
+        internal static  Func<int, decimal> CreateBulkDiscountPricing(this Product product, int trigger, int bonus)
         {
             return i =>
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Supermarket.Core;
 using Supermarket.OO;
 using Supermarket.Test.Core;
 

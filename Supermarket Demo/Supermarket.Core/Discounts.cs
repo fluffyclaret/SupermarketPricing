@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Supermarket.OO
+﻿namespace Supermarket.Core
 {
     public class Discounts
     {
+        public Discounts()
+        {
+              discounts = new Discount[0];  
+        }
+
         public Discount[] discounts { get; set; }
     }
 
