@@ -64,7 +64,7 @@ namespace Supermarket.Functional
                 throw new InvalidOperationException("A product cannot have a negative price");
             }
 
-            // TODO: Very very closed
+            // TODO: Should refactor this outside of this class
             var config = _reader.Read();
 
             var discount = config.discounts.FirstOrDefault(d => d.sku == _product.SKU);
